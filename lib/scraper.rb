@@ -10,18 +10,24 @@ class Scraper
     end
 
     def get_players
-        self.get_page.css("tr")
+        players = self.get_page.css("tr")
+        #the first entry in this array is irrelavant and should be removed.
+        players.shift
     end
 
     def make_players
-        self.get_players.each do |player|
-          player = player.css("si-table-td")
-            player_name = player.css(".tblplayername").text
-            player_team = player.css(".tblteam").text
-            player_goals = player.css(".tblgoals")
-            new_player = Player.new(player_name, player_club, player_goals)
-        end   
-    end   
+      players = []
+      self.get_players.each do |player|
+          player_name = player.css(".tblplayername").text
+          player_team = player.css(".tblteam").text
+          player_goals = player.css(".tblgoals").text
+          new_player = Player.new(player_name, player_team, player_goals)
+          players << new_player
+        end
+
+      players
+    end
 end
 
-Scraper.new.get_page
+scraper = Scraper.new
+scraper.make_players

@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require_relative '../config/environment'
+
+
+class EplStats
+  Scraper.new.make_players
+  puts "Welcome to the EPL goal stats app"
+
+  input = gets.strip
+  if input == "all"
+    Player.display_players
+  end
+end
+
+EplStats.new
