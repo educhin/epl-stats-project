@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-require_relative 'player.rb'
+require_relative './player.rb'
 
 class Scraper
     def get_page
@@ -13,21 +13,22 @@ class Scraper
         players = self.get_page.css("tr")
         #the first entry in this array is irrelavant and should be removed.
         players.shift
+
+        players
     end
 
     def make_players
       players = []
       self.get_players.each do |player|
-          player_name = player.css(".tblplayername").text
-          player_team = player.css(".tblteam").text
-          player_goals = player.css(".tblgoals").text
-          new_player = Player.new(player_name, player_team, player_goals)
-          players << new_player
-        end
+        # css("si-table-td")
+        player_name = player.css(".tblplayername").text.strip
+        player_team = player.css(".tblteam").text.strip
+        player_goals = player.css(".tblgoals").text.strip
 
+        new_player = Player.new(player_name, player_team, player_goals)
+
+        players << new_player
+      end
       players
     end
 end
-
-scraper = Scraper.new
-scraper.make_players
