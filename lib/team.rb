@@ -1,21 +1,50 @@
 class Team
 
-  attr_accessor :name, :team, :goals
+  attr_accessor :name
+  attr_reader :players
 
   @@all = []
 
   def initialize(name)
       @name = name
+      @players = []
       @@all << self
   end
 
-  def self.all
+  def self.all_teams
     @@all
   end
 
-  def players
-    Player.all.select do |player|
+  def players_list
+    Player.all_players.select do |player|
       player.team.name == self.name
+    end
+  end
+
+  def self.find_or_create_by_name(name)
+    team = @@all.detect{|team| team.name == name}
+
+    if team == nil
+      team = Team.new(name)
+      team
+    else
+      team
+    end
+  end
+
+  def self.display_teams
+    teams = self.all.sort_by(&:name)
+    teams.each do |team|
+      puts "#{team.name}"
+    end
+  end
+
+  def display_team_players
+    players = self.players_list.sort{ |a, b|  b.goals <=> a.goals }
+    puts "#{self.name} Top Scorers"
+    players.each_with_index do |player, i|
+      puts "#{i + 1}) #{player.name} #{player.goals} goals"
+      puts "------------------"
     end
   end
 end

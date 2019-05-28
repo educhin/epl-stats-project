@@ -8,8 +8,13 @@ class EplStats
   puts "Welcome to the EPL goal stats app"
 
   input = gets.strip
-  if input == "all"
+  case input
+  when "all players"
     Player.display_players
+  when "all teams"
+    Team.display_teams
+  when "liverpool"
+    
   end
 end
 

@@ -10,17 +10,18 @@ class Player
       @goals = goals
 
       @@all << self
+      @team.players << self
   end
 
-  def self.all
-    @all
+  def self.all_players
+    @@all
   end
 
   def self.display_players
-    @@all.each do |player|
+    self.all_players.each do |player|
       puts "Name: #{player.name}"
-      puts "Team: #{player.team}"
-      puts" Goals: #{player.goals}"
+      puts "Team: #{player.team.name}"
+      puts "Goals: #{player.goals}"
       puts "------------------"
     end
   end
