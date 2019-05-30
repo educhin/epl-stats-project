@@ -22,7 +22,7 @@ class Player
       puts "Name: #{player.name}"
       puts "Team: #{player.team.name}"
       puts "Goals: #{player.goals}"
-      puts "------------------"
+      puts "--------------------------"
     end
   end
 end

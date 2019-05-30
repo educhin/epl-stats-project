@@ -21,8 +21,13 @@ class Team
     end
   end
 
-  def self.find_or_create_by_name(name)
+  def self.find_team(name)
     team = @@all.detect{|team| team.name == name}
+    team
+  end
+
+  def self.find_or_create_by_name(name)
+    team = self.find_team(name)
 
     if team == nil
       team = Team.new(name)
@@ -33,7 +38,7 @@ class Team
   end
 
   def self.display_teams
-    teams = self.all.sort_by(&:name)
+    teams = self.all_teams.sort_by(&:name)
     teams.each do |team|
       puts "#{team.name}"
     end

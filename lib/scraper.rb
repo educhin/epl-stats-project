@@ -32,8 +32,3 @@ class Scraper
     players
   end
 end
-
-Scraper.new.make_players
-# Player.display_players
-# Team.display_teams
-Team.all_teams[0].display_team_players

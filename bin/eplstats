@@ -2,20 +2,55 @@
 
 require_relative '../config/environment'
 
-
 class EplStats
   Scraper.new.make_players
   puts "Welcome to the EPL goal stats app"
+  puts "To view a list of teams type: Show all teams"
+  puts "To view a list of all top scorers type: Show all players"
+  puts "To view a list of top scorers from a team type the team's name full name"
+  puts "To exit type: Exit"
+  puts "To see these instructions again type: Help"
 
-  input = gets.strip
-  case input
-  when "all players"
-    Player.display_players
-  when "all teams"
-    Team.display_teams
-  when "liverpool"
-    
+
+  def run_prgrm
+    puts "--------------------------"
+    puts "What would you like to do?"
+    input = gets.strip
+    team = Team.find_team(input.capitalize)
+
+    if team != nil
+      team.display_team_players
+      self.run_prgrm
+    else
+      case input
+      when "Show all players"
+        Player.display_players
+        self.run_prgrm
+      when "Show all teams"
+        Team.display_teams
+        self.run_prgrm
+      # when team.name
+      #   team.display_team_players
+      #   self.run_prgrm
+      #   # index = Team.all_teams.index(input.capitalize)
+      #   # Team.all_teams[index].display_teams
+      when "Exit"
+        exit
+      when "Help"
+        puts "--------------------------------------------"
+        puts "To view a list of teams type: Show all teams"
+        puts "To view a list of all top scorers type: Show all players"
+        puts "To view a list of top scorers from a team type the team's name full name"
+        puts "To exit type: Exit"
+        puts "To see these instructions again type: Help"
+        puts "These commands are case sensitive"
+        self.run_prgrm
+      else
+        puts "Our apologies, your request was not understood. Please try again"
+        self.run_prgrm
+      end
+    end
   end
 end
 
-EplStats.new
+EplStats.new.run_prgrm
