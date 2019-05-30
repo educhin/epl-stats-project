@@ -21,7 +21,6 @@ class Scraper
   def make_players
     players = []
     self.get_players.each do |player|
-      # css("si-table-td")
       player_name = player.css(".tblplayername").text.strip
       player_team = Team.find_or_create_by_name(player.css(".tblteam").text.strip)
       player_goals = player.css(".tblgoals").text.strip

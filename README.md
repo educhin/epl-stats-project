@@ -1,28 +1,21 @@
 # Epl::Stats::Project
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/epl/stats/project`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This program was built as a practice application for the FlatIron course. Currently this scrapes information from the website https://sports.ndtv.com/english-premier-league/stats/top-goal-scorers-player-statsdetail and displays the top scorers from this past English Premier League (EPL) season. As a future update I plan to extend this project by pulling information directly from the EPLs API which will allow for a more stable and robust application to be built.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+To get this program up and running clone this repo down to your local environment by running the command `git clone git@github.com:educhin/epl-stats-project.git` in your console.
 
-```ruby
-gem 'epl-stats-project'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install epl-stats-project
+Once the repo has been clone to your local device cd into the project folder and run the command `ruby bin/eplstats`
 
 ## Usage
 
-TODO: Write usage instructions here
+This application is used to view top scorers in the EPL using the following commands
+  To view a list of teams type: Show all teams
+  To view a list of all top scorers type: Show all players
+  To view a list of top scorers from a team type the team's name full name
+  To exit type: Exit
+  To see these instructions again type: Help
 
 ## Development
 
