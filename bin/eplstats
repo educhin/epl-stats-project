@@ -3,13 +3,23 @@
 require_relative '../config/environment'
 
 class EplStats
-  Scraper.new.make_players
-  puts "Welcome to the EPL goal stats app"
-  puts "To view a list of teams type: Show all teams"
-  puts "To view a list of all top scorers type: Show all players"
-  puts "To view a list of top scorers from a team type the team's name full name"
-  puts "To exit type: Exit"
-  puts "To see these instructions again type: Help"
+  # make two methods
+  # one of them should be called #print_menu
+  # the other should be #initialize
+
+  def initialize
+    Scraper.new.make_players
+    print_menu
+  end
+
+  def print_menu
+    puts "Welcome to the EPL goal stats app"
+    puts "To view a list of teams type: Show all teams"
+    puts "To view a list of all top scorers type: Show all players"
+    puts "To view a list of top scorers from a team type the team's name full name"
+    puts "To exit type: Exit"
+    puts "To see these instructions again type: Help"
+  end
 
 
   def run_prgrm
@@ -33,12 +43,7 @@ class EplStats
       when "Exit"
         exit
       when "Help"
-        puts "--------------------------------------------"
-        puts "To view a list of teams type: Show all teams"
-        puts "To view a list of all top scorers type: Show all players"
-        puts "To view a list of top scorers from a team type the team's name full name"
-        puts "To exit type: Exit"
-        puts "To see these instructions again type: Help"
+        self.print_menu
         self.run_prgrm
       else
         puts "Our apologies, your request was not understood. Please try again"

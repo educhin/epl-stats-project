@@ -1,10 +1,8 @@
-require 'nokogiri'
-require 'open-uri'
-require 'pry'
 
-require_relative './team.rb'
-require_relative './player.rb'
-
+#
+# require_relative './team.rb'
+# require_relative './player.rb'
+#
 
 class Scraper
   def get_page

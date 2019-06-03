@@ -16,25 +16,24 @@ class Team
   end
 
   def players_list
-    Player.all_players.select do |player|
-      player.team.name == self.name
-    end
+    Player.all_players.select {|player| player.team.name == self.name}
   end
 
   def self.find_team(name)
-    team = @@all.detect{|team| team.name == name}
-    team
+    all_teams.detect{|team| team.name == name}
   end
 
   def self.find_or_create_by_name(name)
-    team = self.find_team(name)
+    # team = self.find_team(name)
+    #
+    # if team == nil
+    #   team = Team.new(name)
+    #   team
+    # else
+    #   team
+    # end
 
-    if team == nil
-      team = Team.new(name)
-      team
-    else
-      team
-    end
+    find_team(name) || Team.new(name)
   end
 
   def self.display_teams
