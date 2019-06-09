@@ -2,4 +2,4 @@
 
 require_relative '../config/environment'
 
-EplStats.new.run_prgrm
+EplStats::EplStats.new.run_prgrm
