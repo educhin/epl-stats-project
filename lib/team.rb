@@ -24,15 +24,6 @@ class Team
   end
 
   def self.find_or_create_by_name(name)
-    # team = self.find_team(name)
-    #
-    # if team == nil
-    #   team = Team.new(name)
-    #   team
-    # else
-    #   team
-    # end
-
     find_team(name) || Team.new(name)
   end
 

@@ -1,9 +1,3 @@
-
-#
-# require_relative './team.rb'
-# require_relative './player.rb'
-#
-
 class Scraper
   def get_page
      doc = Nokogiri::HTML(open("https://sports.ndtv.com/english-premier-league/stats/top-goal-scorers-player-statsdetail"))
